@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Class Timer Prototype</title>
+    <title>USMA Class Timer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script type="module">
         import dayjs from 'https://cdn.skypack.dev/dayjs';
 
-        const DAYS = {"2024-08-19": 1, "2024-08-20": 2, "2024-08-21": 1, "2024-08-22": 2, "2024-08-23": 1, "2024-08-26": 1, "2024-08-27": 2, "2024-08-28": 1, "2024-08-29": 2, "2024-08-30": 2, "2024-09-03": 1, "2024-09-04": 2, "2024-09-05": 1, "2024-09-06": 2, "2024-09-09": 1, "2024-09-10": 2, "2024-09-11": 1, "2024-09-12": 2, "2024-09-13": 1, "2024-09-16": 1, "2024-09-17": 2, "2024-09-18": 1, "2024-09-19": 2, "2024-09-20": 2, "2024-09-23": 1, "2024-09-24": 2, "2024-09-25": 1, "2024-09-26": 2, "2024-09-27": 1, "2024-09-30": 1, "2024-10-01": 2, "2024-10-02": 1, "2024-10-03": 2, "2024-10-04": 2, "2024-10-07": 1, "2024-10-08": 2, "2024-10-09": 1, "2024-10-10": 2, "2024-10-11": 1, "2024-10-15": 1, "2024-10-16": 2, "2024-10-17": 1, "2024-10-18": 2, "2024-10-21": 1, "2024-10-22": 2, "2024-10-23": 1, "2024-10-24": 2, "2024-10-25": 2, "2024-10-28": 1, "2024-10-29": 2, "2024-10-30": 1, "2024-10-31": 2, "2024-11-01": 1, "2024-11-04": 1, "2024-11-05": 2, "2024-11-06": 1, "2024-11-07": 2, "2024-11-08": 2, "2024-11-12": 1, "2024-11-13": 2, "2024-11-14": 1, "2024-11-15": 2, "2024-11-18": 1, "2024-11-19": 2, "2024-11-20": 1, "2024-11-21": 2, "2024-11-22": 1, "2024-11-25": 1, "2024-11-26": 2, "2024-11-27": 2, "2024-12-03": 1, "2024-12-04": 2, "2024-12-05": 1, "2024-12-06": 2, "2024-12-09": 1, "2024-12-10": 2, "2024-12-11": 1, "2024-12-12": 2, "2024-12-13": 1, "2025-01-07": 1, "2025-01-08": 2, "2025-01-09": 1, "2025-01-10": 2, "2025-01-13": 1, "2025-01-14": 2, "2025-01-15": 1, "2025-01-16": 2, "2025-01-17": 2, "2025-01-21": 1, "2025-01-22": 2, "2025-01-23": 1, "2025-01-24": 2, "2025-01-27": 1, "2025-01-28": 2, "2025-01-29": 1, "2025-01-30": 2, "2025-01-31": 1, "2025-02-03": 1, "2025-02-04": 2, "2025-02-05": 1, "2025-02-06": 2, "2025-02-07": 2, "2025-02-10": 1, "2025-02-11": 2, "2025-02-12": 1, "2025-02-13": 2, "2025-02-14": 1, "2025-02-18": 1, "2025-02-19": 2, "2025-02-20": 1, "2025-02-21": 2, "2025-02-24": 1, "2025-02-25": 2, "2025-02-26": 1, "2025-02-27": 2, "2025-02-28": 2, "2025-03-03": 1, "2025-03-04": 2, "2025-03-05": 1, "2025-03-06": 2, "2025-03-07": 1, "2025-03-10": 1, "2025-03-11": 2, "2025-03-12": 1, "2025-03-13": 2, "2025-03-14": 1, "2025-03-24": 1, "2025-03-25": 2, "2025-03-26": 1, "2025-03-27": 2, "2025-03-28": 2, "2025-03-31": 1, "2025-04-01": 2, "2025-04-02": 1, "2025-04-03": 2, "2025-04-04": 2, "2025-04-07": 1, "2025-04-08": 2, "2025-04-09": 1, "2025-04-10": 2, "2025-04-11": 1, "2025-04-14": 1, "2025-04-15": 2, "2025-04-16": 1, "2025-04-17": 2, "2025-04-18": 2, "2025-04-22": 1, "2025-04-23": 2, "2025-04-25": 1, "2025-04-28": 1, "2025-04-29": 2, "2025-04-30": 1, "2025-05-01": 2, "2025-05-05": 1, "2025-05-06": 2, "2025-05-07": 1, "2025-05-08": 2, "2025-05-09": 1}
+        const DAYS = { "2024-08-19": 1, "2024-08-20": 2, "2024-08-21": 1, "2024-08-22": 2, "2024-08-23": 1, "2024-08-26": 1, "2024-08-27": 2, "2024-08-28": 1, "2024-08-29": 2, "2024-08-30": 2, "2024-09-03": 1, "2024-09-04": 2, "2024-09-05": 1, "2024-09-06": 2, "2024-09-09": 1, "2024-09-10": 2, "2024-09-11": 1, "2024-09-12": 2, "2024-09-13": 1, "2024-09-16": 1, "2024-09-17": 2, "2024-09-18": 1, "2024-09-19": 2, "2024-09-20": 2, "2024-09-23": 1, "2024-09-24": 2, "2024-09-25": 1, "2024-09-26": 2, "2024-09-27": 1, "2024-09-30": 1, "2024-10-01": 2, "2024-10-02": 1, "2024-10-03": 2, "2024-10-04": 2, "2024-10-07": 1, "2024-10-08": 2, "2024-10-09": 1, "2024-10-10": 2, "2024-10-11": 1, "2024-10-15": 1, "2024-10-16": 2, "2024-10-17": 1, "2024-10-18": 2, "2024-10-21": 1, "2024-10-22": 2, "2024-10-23": 1, "2024-10-24": 2, "2024-10-25": 2, "2024-10-28": 1, "2024-10-29": 2, "2024-10-30": 1, "2024-10-31": 2, "2024-11-01": 1, "2024-11-04": 1, "2024-11-05": 2, "2024-11-06": 1, "2024-11-07": 2, "2024-11-08": 2, "2024-11-12": 1, "2024-11-13": 2, "2024-11-14": 1, "2024-11-15": 2, "2024-11-18": 1, "2024-11-19": 2, "2024-11-20": 1, "2024-11-21": 2, "2024-11-22": 1, "2024-11-25": 1, "2024-11-26": 2, "2024-11-27": 2, "2024-12-03": 1, "2024-12-04": 2, "2024-12-05": 1, "2024-12-06": 2, "2024-12-09": 1, "2024-12-10": 2, "2024-12-11": 1, "2024-12-12": 2, "2024-12-13": 1, "2025-01-07": 1, "2025-01-08": 2, "2025-01-09": 1, "2025-01-10": 2, "2025-01-13": 1, "2025-01-14": 2, "2025-01-15": 1, "2025-01-16": 2, "2025-01-17": 2, "2025-01-21": 1, "2025-01-22": 2, "2025-01-23": 1, "2025-01-24": 2, "2025-01-27": 1, "2025-01-28": 2, "2025-01-29": 1, "2025-01-30": 2, "2025-01-31": 1, "2025-02-03": 1, "2025-02-04": 2, "2025-02-05": 1, "2025-02-06": 2, "2025-02-07": 2, "2025-02-10": 1, "2025-02-11": 2, "2025-02-12": 1, "2025-02-13": 2, "2025-02-14": 1, "2025-02-18": 1, "2025-02-19": 2, "2025-02-20": 1, "2025-02-21": 2, "2025-02-24": 1, "2025-02-25": 2, "2025-02-26": 1, "2025-02-27": 2, "2025-02-28": 2, "2025-03-03": 1, "2025-03-04": 2, "2025-03-05": 1, "2025-03-06": 2, "2025-03-07": 1, "2025-03-10": 1, "2025-03-11": 2, "2025-03-12": 1, "2025-03-13": 2, "2025-03-14": 1, "2025-03-24": 1, "2025-03-25": 2, "2025-03-26": 1, "2025-03-27": 2, "2025-03-28": 2, "2025-03-31": 1, "2025-04-01": 2, "2025-04-02": 1, "2025-04-03": 2, "2025-04-04": 2, "2025-04-07": 1, "2025-04-08": 2, "2025-04-09": 1, "2025-04-10": 2, "2025-04-11": 1, "2025-04-14": 1, "2025-04-15": 2, "2025-04-16": 1, "2025-04-17": 2, "2025-04-18": 2, "2025-04-22": 1, "2025-04-23": 2, "2025-04-25": 1, "2025-04-28": 1, "2025-04-29": 2, "2025-04-30": 1, "2025-05-01": 2, "2025-05-05": 1, "2025-05-06": 2, "2025-05-07": 1, "2025-05-08": 2, "2025-05-09": 1 }
 
-        const HOURS = {"A1": "0835", "B1": "0940", "C1": "1045", "D1": "1150", "E1": "1505", "F1": "1610", "G1": "0855", "H1": "1020", "I1": "1150", "AB1": "0940", "BC1": "1020", "CD1": "1150", "EF1": "1610", "J1": "1525", "K1": "1610", "A2": "0835", "B2": "0940", "C2": "1045", "D2": "1150", "E2": "1505", "F2": "1610", "G2": "0855", "H2": "1020", "I2": "1150", "J2": "1400", "K2": "1530", "L2": "1610", "LUNCH1": "1235", "LUNCH2": "1235", "DEAN1": "1400"}
+        const HOURS = { "A1": "0835", "B1": "0940", "C1": "1045", "D1": "1150", "E1": "1505", "F1": "1610", "G1": "0855", "H1": "1020", "I1": "1150", "AB1": "0940", "BC1": "1020", "CD1": "1150", "EF1": "1610", "J1": "1525", "K1": "1610", "A2": "0835", "B2": "0940", "C2": "1045", "D2": "1150", "E2": "1505", "F2": "1610", "G2": "0855", "H2": "1020", "I2": "1150", "J2": "1400", "K2": "1530", "L2": "1610", "LUNCH1": "1235", "LUNCH2": "1235", "DEAN1": "1400" }
 
         document.addEventListener('DOMContentLoaded', async () => {
             const countdownElement = document.getElementById('countdown');
@@ -31,22 +32,47 @@
                 console.error('Wake Lock request failed: ', err);
             }
 
+            const redTime = 1200; // 10 minutes
+
             function updateTimer() {
                 const now = dayjs();
                 const timeLeft = targetTime ? targetTime.diff(now, 'second') : 0;
-                if (timeLeft <= 0) {
-                    determineClassHour();
-                }
-                const countdownMinutes = Math.floor(timeLeft / 60);
-                const countdownSeconds = timeLeft % 60;
 
                 if (timeLeft > 0) {
+                    const countdownMinutes = Math.floor(timeLeft / 60);
+                    const countdownSeconds = timeLeft % 60;
                     countdownElement.textContent = `${String(countdownMinutes).padStart(2, '0')}:${String(countdownSeconds).padStart(2, '0')}`;
+
+                    if (timeLeft <= redTime) {
+                        let darkMode = containerElement.classList.contains('bg-black')
+                        let red = 0;
+                        let green = 0;
+                        let blue = 0;
+
+                        const redRatio = (redTime - timeLeft) / redTime; // gradually increases from 0 to 1
+                        if (darkMode) {
+                            red = 255;
+                            green = 255 - Math.floor(255 * redRatio); // Gradually decreasing green component
+                            blue = 255 - Math.floor(255 * redRatio); // Gradually decreasing blue component
+                        } else {
+                            red = Math.floor(255 * redRatio); // Gradually increasing red component
+                            green = 0;
+                            blue = 0;
+                        }
+                        countdownElement.style.color = `rgb(${red}, ${green}, ${blue})`;
+                        console.log(`rgb(${red}, ${green}, ${blue})`);
+                    } else {
+                        countdownElement.style.color = '';
+                    }
                 } else {
                     countdownElement.textContent = "00:00";
                     classHourElement.textContent = "XX";
+                    countdownElement.style.color = 'red';
                 }
                 currentTimeElement.textContent = now.format('HH:mm:ss');
+
+                // update should be done at the next exact second
+                setTimeout(updateTimer, 1000 - Date.now() % 1000);
             }
 
             function determineClassHour() {
@@ -101,7 +127,27 @@
             currentTimeElement.addEventListener('click', toggleDarkMode);
 
             determineClassHour();
-            setInterval(updateTimer, 1000);
+
+            updateTimer();
+
+            let mouseTimeout;
+
+            function showGithubIcon() {
+                const githubIcon = document.getElementById('github-icon');
+                githubIcon.classList.remove('hidden');
+
+                clearTimeout(mouseTimeout);
+                mouseTimeout = setTimeout(() => {
+                    githubIcon.classList.add('hidden');
+                }, 3000);
+            }
+
+            document.addEventListener('mousemove', showGithubIcon);
+            document.addEventListener('focus', showGithubIcon);
+            document.addEventListener('blur', () => {
+                const githubIcon = document.getElementById('github-icon');
+                githubIcon.classList.add('hidden');
+            });
         });
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -109,17 +155,34 @@
     <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
     <style>
         body {
-          font-family: "Kode Mono", monospace;
-          font-weight: 700;
+            font-family: "Kode Mono", monospace;
+            font-weight: 700;
         }
-        body > div {
+
+        body>div {
             background: inherit;
         }
     </style>
 </head>
+
 <body class="grid grid-cols-4 h-screen w-screen overflow-hidden bg-gray-100 text-gray-800">
-    <div id="countdown"    class="text-[30vw] sm:text-[30vw] md:text-[30vw] xl:text-[50vh] col-span-4  font-bold flex items-center justify-center">00:00</div>
-    <div id="class-hour"   class="text-[25vw] sm:text-[20vw] md:text-[15vh] col-span-4 md:col-span-1 flex items-center justify-center cursor-pointer">XX</div>
-    <div id="current-time" class="text-[18vw] sm:text-[13vw] md:text-[15vh] col-span-4 md:col-span-3 flex items-center justify-center cursor-pointer">00:00:00</div>
+    <div id="countdown"
+        class="text-[30vw] sm:text-[30vw] md:text-[30vw] xl:text-[50vh] col-span-4  font-bold flex items-center justify-center">
+        00:00</div>
+    <div id="class-hour"
+        class="text-[25vw] sm:text-[20vw] md:text-[15vh] col-span-4 md:col-span-1 flex items-center justify-center cursor-pointer">
+        XX</div>
+    <div id="current-time"
+        class="text-[18vw] sm:text-[13vw] md:text-[15vh] col-span-4 md:col-span-3 flex items-center justify-center cursor-pointer">
+        00:00:00</div>
+    <a href="https://github.com/aadityabhatia/usma-class-timer" id="github-icon" target="_blank"
+        class="fixed bottom-4 right-4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="currentColor"
+            class="text-gray-800 hover:text-gray-600">
+            <path
+                d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.438 9.8 8.207 11.385.6.11.793-.26.793-.577 0-.285-.01-1.04-.016-2.04-3.338.727-4.043-1.61-4.043-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.082-.73.082-.73 1.205.085 1.84 1.238 1.84 1.238 1.07 1.835 2.808 1.305 3.492.997.108-.775.42-1.306.764-1.606-2.665-.305-5.466-1.335-5.466-5.935 0-1.312.469-2.386 1.235-3.23-.124-.303-.535-1.527.117-3.18 0 0 1.008-.322 3.3 1.23.957-.266 1.983-.398 3.003-.403 1.02.005 2.046.137 3.006.403 2.29-1.552 3.297-1.23 3.297-1.23.654 1.653.243 2.877.12 3.18.77.844 1.233 1.918 1.233 3.23 0 4.61-2.805 5.625-5.476 5.92.43.37.823 1.102.823 2.222 0 1.605-.014 2.898-.014 3.293 0 .32.19.693.8.575C20.565 22.3 24 17.8 24 12.5 24 5.87 18.63.5 12 .5z" />
+        </svg>
+    </a>
 </body>
+
 </html>
